@@ -7,14 +7,14 @@ jobs:
         id: cache-npm
         uses: actions/cache@v3
         with:
-          path: node-modules
+          path: nodes-modules
       - run: npm install
       - run: npm run build
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
-        restore-keys: npm-feature-${{ hashFiles('node-modules') }}
+      - uses: actions/checkout@v3
       - run: npm install
       - run: npm run e2e:headless
       - uses: actions/upload-artifact@v3
