@@ -3,18 +3,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
-uses: actions/checkout@v3
-run: npm install
-run: npm run build
-test:
-  runs-on: ubuntu-latest
-  steps:
-uses: actions/checkout@v3
-run: npm install
-run: npm run e2e:headless
-uses: actions/upload-artifact@v3
-with:
-  name: my-artifact
-  path: cypress/videos
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm run build
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm run e2e:headless
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: cypress/videos
 'on': [push]
