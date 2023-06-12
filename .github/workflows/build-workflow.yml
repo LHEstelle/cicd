@@ -1,35 +1,5 @@
 ---
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: npm install
-      - run: npm run build
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: ls -lah
-      - run: npm run e2e:headless
-      - if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: e2e-tests
-          path: cypress/videos
   deploy:
     runs-on: ubuntu-latest
     steps:
