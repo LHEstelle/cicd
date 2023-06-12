@@ -4,7 +4,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install dependencies and build
       - run: npm install
       - run: npm run build
   test:
@@ -16,6 +15,6 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
-          name: e2e-tests
+          name: my-artifact
           path: cypress/videos
 'on': [push]
