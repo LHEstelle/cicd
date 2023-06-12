@@ -24,8 +24,8 @@ jobs:
             /home/runner/.cache/Cypress
           key: ${{ runner.os }}--node-${{ hashFiles('**/package-lock.json') }}
       - run: npm run e2e:headless
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - if: always()
+        uses: actions/upload-artifact@v3
         with:
           name: e2e-tests
           path: cypress/videos
