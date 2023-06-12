@@ -4,7 +4,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_KEY }}
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
       - run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secret.SSH_HOST }} "ls"
 'on': [push]
