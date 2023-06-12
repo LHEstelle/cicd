@@ -9,7 +9,7 @@ jobs:
           path: |
             nodes_modules
             /home/runner/.cache/Cypress
-          key: ${{ runner.os }}--node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm install
       - run: npm run build
   test:
@@ -22,7 +22,7 @@ jobs:
           path: |
             nodes_modules
             /home/runner/.cache/Cypress
-          key: ${{ runner.os }}--node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm run e2e:headless
       - if: always()
         uses: actions/upload-artifact@v3
