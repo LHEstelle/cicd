@@ -6,11 +6,5 @@ jobs:
       - uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
-      - run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
-          cd cicd && \
-          git pull && \
-          npm install && \
-          npm run build && \
-          pm2 restart all"
+      - run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd CICD && git pull && npm install && npm run build && pm2 restart all"
 'on': [push]
