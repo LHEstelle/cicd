@@ -9,6 +9,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
           username: ${{ github.actor }}
+      - name: Login to GitHub Container Registry
+        uses: docker/build-push-action@v4
+        with: 
+          push: true
+          tags: ghcr.io/lhestelle/nodejs-my-website:latest
+
   # deploy:
   #   runs-on: ubuntu-latest
   #   steps:
