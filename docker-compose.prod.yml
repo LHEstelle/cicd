@@ -1,6 +1,6 @@
 services:
   next:
-    image: ghcr.io/lhestelle/cesi-next-cicd:latest
+    image: ghcr.io/lhestelle/cicd:latest
     restart: always
     ports:
       - 3000:3000
